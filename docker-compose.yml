@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  convo-frontend:
+    image: ${CONVOFrontend}
+    container_name: convo-frontend
+    restart: always
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=web
+      - traefik.http.routers.convo-frontend.rule=Host(`$CI_ENVIRONMENT_URL`) || Host(`www.$CI_ENVIRONMENT_URL`)
+      - traefik.http.routers.convo-frontend.entrypoints=websecure
+      - traefik.http.routers.convo-frontend.tls.certresolver=convo
+      - traefik.http.routers.convo-frontend.middlewares=convo-frontend-www-redirect
+      - 'traefik.http.middlewares.convo-frontend-www-redirect.redirectregex.regex=^https://$CI_ENVIRONMENT_URL/(.*)'
+      - 'traefik.http.middlewares.convo-frontend-www-redirect.redirectregex.replacement=https://www.$CI_ENVIRONMENT_URL/$${1}'
+
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

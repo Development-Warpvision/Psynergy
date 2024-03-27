@@ -1,0 +1,41 @@
+.staging_rule:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web" && $CI_COMMIT_BRANCH == "develop"'
+
+.staging_environment:
+  environment:
+    name: staging
+    url: $StagingURL
+
+build_staging:
+  extends:
+    - .build
+    - .staging_rule
+    - .staging_environment
+  script:
+    - docker-compose -f docker-compose.stg.yml -f docker-compose.build.yml build
+    - docker-compose -f docker-compose.stg.yml -f docker-compose.build.yml push
+  artifacts:
+    paths:
+      - docker-compose.stg.yml
+
+deploy_staging:
+  extends:
+    - .staging_rule
+    - .staging_environment
+  stage: deploy
+  before_script:
+    - echo $CI_REGISTRY_PASSWORD | sudo docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+    - sudo docker pull $CONVOFrontend
+  script:
+    - sudo -E docker-compose -f docker-compose.stg.yml up -d
+  after_script:
+    - sudo docker image prune -f -a
+    - sudo docker logout
+  tags:
+    - convoportal
+    - staging
+    - front-end
+
+  variables:
+    GIT_STRATEGY: none

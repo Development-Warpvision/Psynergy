@@ -1,0 +1,4 @@
+variables:
+  CONVOFrontend: $CI_REGISTRY/all-in-one-box/chat-app-bo-fe:$CI_ENVIRONMENT_NAME
+  ProductionURL: convoportal.com
+  StagingURL: stg.convoportal.com

@@ -1,0 +1,19 @@
+version: '3.5'
+
+services:
+  convo-frontend:
+    image: ${CONVOFrontend}
+    container_name: convo-frontend
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=web
+      - traefik.http.routers.convo-frontend.rule=Host(`$CI_ENVIRONMENT_URL`)
+      - traefik.http.routers.convo-frontend.entrypoints=websecure
+      - traefik.http.routers.convo-frontend.tls.certresolver=myresolver
+    restart: always
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

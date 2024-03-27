@@ -1,0 +1,14 @@
+.build:
+  stage: build
+  image: docker/compose
+  services:
+    - docker:dind
+  before_script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+  after_script:
+    - docker logout
+  tags:
+    - docker
+    - east-c
+    - gce
+    - linux

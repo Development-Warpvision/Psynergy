@@ -1,0 +1,1174 @@
+
+//   import {
+//     Avatar,
+//     IconButton,
+//     Input,
+//     InputBase,
+//     InputLabel,
+//     ListItem,
+//     ListItemAvatar,
+//     ListItemText,
+//     Paper,
+//     Typography,
+//   } from "@mui/material";
+//   import axios from "axios";
+//   import { useDispatch } from "react-redux";
+//   import { Box } from "@mui/system";
+//   import React, { useEffect, useState } from "react";
+//   import AttachFileIcon from "@mui/icons-material/AttachFile";
+//   import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+//   import SendIcon from "@mui/icons-material/Send";
+//   import Message from "./ChatMessage";
+//   import {
+//     sendgmail,
+//     sendMeta,
+//     sendOutlook,
+//   } from "../../features/send_messageSlice";
+//   import RefreshIcon from "@mui/icons-material/Refresh";
+//   import MoreVertIcon from "@mui/icons-material/MoreVert";
+//   import EmailMessge from "./EmailMessge";
+  
+//   import { socket } from "../../App";
+//   import {
+//     PinnedChats,
+//     getConverstaions,
+//     gmailChat,
+//     metaChat,
+//     outlookChat,
+//   } from "../../features/get_messagesSlice";
+//   import getCookieValue from "../utils/getCookie";
+//   import MoreModel from "./MoreModel";
+//   import { TbPinnedFilled } from "react-icons/tb";
+//   import notification from "../../Toast";
+//   import ChatWidget from "./ChatWidget";
+//   const { DateTime } = require('luxon');
+  
+//   const ChatScreen = ({ Chatdata, chatNumber, currentUserID ,msgData,reply}: any) => {
+  
+//     // socket.on("getWebhook", (notificationData: any) => {
+//       // console.log(msgData)
+//     //   // console.log("johnny ");
+//     msgData = [msgData]
+//     console.log(msgData)
+//     // });
+//     const [data, setData] = useState(Chatdata);
+//     console.log(data)
+  
+//     const [msgData1, setMsgData1] = useState<any>();
+//     const [media, setMedia] = useState<any | null>(null);
+//     const [input, setInput] = useState("");
+//     const sendReply = async()=>{
+//       const res = await axios.post('http://localhost:5000/api/v1/chat/sendChatWidgetMsgToClient',{"chatid":"65360f7b5641d069b9f11e64",type: "reply",replyMsg:input})
+//       console.log(res.data)
+//       setInput('')
+//     }
+//     const [showBottomSheet, setshowBottomSheet] = useState(false);
+//     const [pinnedChats, setPinnedChats] = useState("");
+//     // let ischage: number = 0;
+//     const dispatch = useDispatch<any>();
+//     let recievingMediumCheck: string;
+  
+//     useEffect(() => {
+//       setData(Chatdata);
+//       PinChat();
+//     }, [chatNumber]);
+//     useEffect(() => {
+//       setMsgData1([msgData]);
+//       // PinChat();
+//     }, [chatNumber]);
+//   // setMsgData1([msgData])
+//     const handleClickPinned = async () => {
+//       await dispatch(PinnedChats({ chatid: Chatdata._id })).then(
+//         (onResolved: any) => {
+//           if (onResolved.payload !== "error") {
+//             if (onResolved.payload.errors) {
+//               notification("error", onResolved.payload.errors[0].message);
+//             } else {
+//               setPinnedChats(onResolved.payload);
+//             }
+//           }
+//         }
+//       );
+//     };
+  
+//     // useEffect(() => {
+//     //   console.log(data);
+//     //   setData(data);
+//     //   ischage--;
+//     // }, [ischage === 1, data]);
+//     async function PinChat() {
+//       // await dispatch(PinnedChats(currentUserID)).then(
+       
+//       //   (onResolved: any) => {
+//       //     // console.log(Chatdata._id)
+//       //     if (onResolved && onResolved.payload !== "error") {
+//       //       if (onResolved.payload.errors) {
+//       //         notification("error", onResolved.payload.errors[0].message);
+//       //       } else {
+//       //         setPinnedChats(onResolved.payload);
+//       //       }
+//       //     }
+//       //   }
+//       // );
+      
+//     }
+//     // console.log("hello", pinnedChats);
+  
+//     socket.on("getWebhook", async (notificationData: any) => {
+//       // console.log(`Received notification: ${JSON.stringify(notificationData)}`);
+//       // console.log(notificationData);
+//       if (currentUserID.toString() === notificationData.convid.toString()) {
+//         const updatedData = {
+//           ...data,
+//           message: [
+//             ...data.message,
+//             {
+//               media: {
+//                 emailMsg: {
+//                   body: notificationData.media.emailMsg.body,
+//                   subject: "",
+//                 },
+//               },
+//               contact: { from: "" },
+//               receiveTime: notificationData.contact.receiveTime,
+//             },
+//           ],
+//         };
+  
+//         setData(updatedData);
+//       }
+//     });
+  
+//     recievingMediumCheck =
+//       Chatdata !== undefined ? Chatdata.recievingMedium : null;
+  
+//     const handleSubmit = (recievingMedium: string) => async (e: any) => {
+//       e.preventDefault();
+  
+//       await data.message.push({
+//         cmpId: "am001",
+//         contact: {
+//           name: "deep_._2000",
+//           from: "5757916874329391",
+//           to: Array(1),
+//           cc: Array(0),
+//         },
+//         conversationsId: "641063123f27faf8b03ee9e2",
+//         isRead: false,
+//         media: {
+//           document: [],
+//           image: null,
+//           message: input,
+//           msgId:
+//             "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDU2OTg2ODUxOTE3OjM0MDI4MjM2Njg0MTcxMDMwMDk0OTEyODE3MDY0MTIzNzk2ODQ4OTozMDg1MDY0MTAyNTQ5OTgyNDM5MDgyMTgyOTU5MTE3MTA3MgZDZD",
+//           video: null,
+//         },
+//         receiveTime: new Date(Date.now()).toString(),
+//         recievingMedium: recievingMedium,
+//       });
+//       try {
+//         switch (recievingMedium) {
+//           case "gmail":
+//             const to = (
+//               data !== undefined && data.message[0].contact.from.toString()
+//             ).match(/<(.*?)>/);
+//             await dispatch(
+//               sendgmail({
+//                 to: to[1],
+//                 subject:
+//                   data !== undefined && data.message[0].media.emailMsg.subject,
+//                 body: input,
+//                 replyTo: to[1],
+//                 mediaPath: media,
+//               })
+//             ).then(async (onResolved: any) => {
+//               if (onResolved.payload === 200) {
+//               }
+//               setData(data);
+//             });
+//             break;
+//           case "messenger":
+//             const sameRecipient: any = () => {
+//               let index: number = 0;
+//               if (
+//                 data.message[index].contact.from === getCookieValue("facebookid")
+//               ) {
+//                 index++;
+//                 sameRecipient(data.message[index].contact.from);
+//               }
+//               return data.message[index].contact.from;
+//             };
+//             const recipientId: string =
+//               data !== undefined && sameRecipient(data.message[0].contact.from);
+  
+//             await dispatch(sendMeta({ messageInp: input, recipientId })).then(
+//               (onResolved: any) => {
+//                 setData(data);
+//               },
+//               (onRejected: any) => {
+//                 // console.log(onRejected);
+//               }
+//             );
+//             break;
+//           case "outlook":
+//             await dispatch(
+//               sendOutlook({
+//                 to: data !== undefined && data.message[0].contact.from.toString(),
+//                 subject:
+//                   data !== undefined && data.message[0].media.emailMsg.subject,
+//                 body: input,
+//                 replyTo:
+//                   data !== undefined && data.message[0].contact.from.toString(),
+//                 mediaPath: media,
+//               })
+//             ).then((onResolved: any) => {
+//               if (onResolved.payload === 200) {
+//                 setData(data);
+//               }
+//               // setData([...data]);
+//             });
+//             break;
+//         }
+  
+//         setInput("");
+//       } catch (err) {
+//         // console.log(err);
+//       }
+  
+//       // await setData(Chatdata);
+//     };
+  
+//     const handleRefesh = () => {
+//       switch (recievingMediumCheck) {
+//         case "gmail":
+//           dispatch(gmailChat({})).then((onResolved: any) => {
+//             if (onResolved.payload !== "error") {
+//               dispatch(getConverstaions({})).then((onResolved: any) => {
+//                 if (onResolved.payload !== "error") {
+//                   setData(onResolved.payload[chatNumber]);
+//                 }
+//               });
+//             }
+//           });
+//           break;
+//         case "messenger":
+//           dispatch(metaChat({ msgPlatform: "messenger" })).then(
+//             (onResolved: any) => {
+//               if (onResolved.payload !== "error") {
+//                 dispatch(getConverstaions({})).then((onResolved: any) => {
+//                   if (onResolved.payload !== "error") {
+//                     setData(onResolved.payload[chatNumber]);
+//                   }
+//                 });
+//               }
+//             }
+//           );
+//           break;
+//         case "outlook":
+//           dispatch(outlookChat({})).then((onResolved: any) => {
+//             if (onResolved.payload !== "error") {
+//               dispatch(getConverstaions({})).then((onResolved: any) => {
+//                 if (onResolved.payload !== "error") {
+//                   setData(onResolved.payload[chatNumber]);
+//                 }
+//               });
+//             }
+//           });
+//           break;
+//       }
+//     };
+  
+//     //   const specificDate = DateTime.fromISO(data?.message[0]?.receiveTime);
+//     //   const now = DateTime.now();
+//     // const diff = now.diff(specificDate, ['days', 'hours', 'minutes', 'seconds', "years"]).toObject();
+//     // const daysSince = Math.floor(diff.days);
+//     // const hoursSince = Math.floor(diff.hours);
+//     // const minutesSince = Math.floor(diff.minutes);
+//     // // const secondsSince = Math.floor(diff.seconds);
+//     // const receivedDate = DateTime.fromISO(data?.message[0]?.receiveTime);
+//     // const now = DateTime.now().toUTC();
+//     // const diff = now.diff(receivedDate, ['years', 'months', 'days', 'hours', 'minutes', 'seconds']).toObject();
+  
+//     // // Format the difference as a human-readable string
+//     // let timeAgo = '';
+//     // if (diff.years) {
+//     //   timeAgo = `${diff.years} year${diff.years > 1 ? 's' : ''}`;
+//     // } else if (diff.months) {
+//     //   timeAgo = `${diff.months} month${diff.months > 1 ? 's' : ''}`;
+//     // } else if (diff.days) {
+//     //   timeAgo = `${diff.days} day${diff.days > 1 ? 's' : ''}`;
+//     // } else if (diff.hours) {
+//     //   timeAgo = `${diff.hours} hour${diff.hours > 1 ? 's' : ''}`;
+//     // } else if (diff.minutes) {
+//     //   timeAgo = `${diff.minutes} minute${diff.minutes > 1 ? 's' : ''}`;
+//     // } else {
+//     //   timeAgo = `${diff.seconds} second${diff.seconds > 1 ? 's' : ''}`;
+//     // }
+  
+  
+//     return (
+//       <Box
+//         key={data?data._id:''}
+//         sx={{
+//           display: "flex",
+//           flexDirection: "column",
+//           borderRadius: 1,
+//           marginRight: 2,
+//           backgroundColor: "#585858",
+//           // set screne color
+//         }}
+//       //border={"10px solid black"}
+//       >
+//         <Box
+//           sx={{
+//             flexGrow: 0.3,
+//             minHeight: "100%",
+//             maxHeight: "100%",
+//             backgroundColor: "background.paper",
+//             marginBottom: 1,
+//           }}
+//           // borderBottom={"1px solid gray"}
+//           display={"flex"}
+//           alignItems={"center"}
+//           justifyContent={"center"}
+//         >
+//           <Box
+//             sx={{
+//               display: "flex",
+//               p: 1,
+//               borderRadius: 1,
+//               height: "100%",
+//               alignItems: "center",
+//               justifyContent: "center",
+//             }}
+//             width={"100%"}
+//           >
+//             <Box
+//               display={"flex"}
+//               alignItems={"center"}
+//               justifyContent={"flex-start"}
+//             >
+//               <ListItem alignItems="flex-start">
+//                 <ListItemAvatar sx={{ height: "26px" }}>
+//                   <Avatar alt="Remy Sharp" src="" />
+//                 </ListItemAvatar>
+//                 <ListItemText
+//                   sx={{ fontWeight: "500" }}
+//                   // primary={
+//                   //   data !== undefined && data.message[0] !== undefined
+//                   //     ? data.message[0].contact.name ??
+//                   //     data.message[0].contact.from
+//                   //     : "Loading"
+//                   // }
+//                   secondary={
+//                     <>
+//                       <Typography
+//                         sx={{ display: "inline" }}
+//                         component="span"
+//                         variant="body2"
+//                         color="text.gray"
+//                         fontSize={"13px"}
+//                       >
+//                         {/* {timeAgo} ago */}
+//                       </Typography>
+//                     </>
+//                   }
+//                 />
+//               </ListItem>
+  
+//               {/* <Typography variant="h5" gutterBottom mb={3} color="text.primary">
+//               {data !== undefined && data.message[0] !== undefined
+//                 ? data.message[0].contact.name ?? data.message[0].contact.from
+//                 : "Loading"}
+//             </Typography> */}
+//             </Box>
+//             <hr />
+//             {/* secondary={
+//                   <React.Fragment>
+//                     <Typography
+//                       sx={{ display: "inline" }}
+//                       component="span"
+//                       variant="body2"
+//                       color="#000000"
+//                       fontSize={"13px"}
+//                     >
+//                      Pls Approve this design its tou...
+//                     </Typography>
+//                   </React.Fragment>
+//                 } */}
+  
+//             <Box
+//               sx={{
+//                 flexGrow: 1,
+//               }}
+//             />
+//             {/* ////////////////////////////////////////////////////////////////////////////////// */}
+//             {pinnedChats === "Chat Pinned" ? (
+//               <IconButton sx={{ mt: 2 }} onClick={handleClickPinned}>
+//                 <TbPinnedFilled />
+//               </IconButton>
+//             ) : (
+//               ""
+//             )}
+  
+//             <IconButton
+//               aria-label="refresh"
+//               sx={{ mt: 2 }}
+//               onClick={handleRefesh}
+//             >
+//               <RefreshIcon />
+//             </IconButton>
+//             {/* ///////////////////////// */}
+//             {/* <IconButton aria-label="menu" sx={{ mt: 2 }}>
+//               <MoreVertIcon />
+//             </IconButton> */}
+//             <MoreModel />
+//             {/* ///////////////////////// */}
+//           </Box>
+//         </Box>
+//         <Box
+//           sx={{
+//             borderTop: "1px solid gray",
+//             paddingTop: "10px",
+//             flexGrow: 8,
+//             backgroundColor: "background.paper",
+//             minHeight: showBottomSheet ? "55vh" : "60vh",
+//             maxHeight: showBottomSheet ? "55vh" : "60vh",
+//             overflowY: "auto",
+//           }}
+//         >
+//           {data?data !== undefined? (
+//             data.message.map((e: any, index: number) => {
+//               // // console.log(
+//               //   getCookieValue("facebookname"),
+//               //   data.message[index].contact.name
+//               // );
+  
+//               const isOwn: Boolean =
+//                 e.recievingMedium === "whatsapp"
+//                   ? false
+//                   : e.recievingMedium === "messenger"
+//                     ? getCookieValue("facebookname") ===
+//                     data.message[index].contact.name
+//                     : e.recievingMedium === "instagram"
+//                       ? false
+//                       : e.recievingMedium === "gmail"
+//                         ? getCookieValue("gmailname") ===
+//                         (Array.isArray(
+//                           data.message[index].contact.from.toString().match(/<(.*?)>/)
+//                         )
+//                           ? data.message[index].contact.from
+//                             .toString()
+//                             .match(/<(.*?)>/)[1]
+//                             .toString()
+//                           : data.message[index].contact.from
+//                             .toString()
+//                             .match(/<(.*?)>/))
+//                         : getCookieValue("outlookname") ===
+//                         data.message[index].contact.from;
+  
+//               return e.recievingMedium === "whatsapp" ||
+//                 e.recievingMedium === "messenger" ? (
+//                 <Message
+//                   key={index}
+//                   message={e.media.message ?? null}
+//                   own={isOwn}
+//                   image={e.media.image}
+//                   video={e.media.video}
+//                   document={e.media.document}
+//                 />
+//               ) : (
+//                 <EmailMessge
+//                   key={index}
+//                   message={e.media.emailMsg}
+//                   own={isOwn}
+//                   image={null}
+//                   video={null}
+//                   document={null}
+//                 />
+//               );
+//             })
+//           ) : (
+//             <></>
+//           ):''}
+//          {
+//     msgData.map((innerArray:any, index:any) => (
+//       <div key={index}>
+//         {innerArray.map((e:any, innerIndex:any) => (
+//           <ChatWidget key={innerIndex} data={e} reply={reply} />
+//         ))}
+//       </div>
+//     ))
+//   }
+//         </Box>
+  
+//         {/* <Box
+//           sx={{
+//             // flexGrow: 0.3,
+//             minHeight: 40,
+//             maxHeight: 40,
+//             backgroundColor: "background.paper",
+//             display: showBottomSheet ? "flex" : "none",
+//             // marginBottom: 1,
+//           }}
+//         >
+//           <Typography variant="subtitle2" gutterBottom color="text.primary">
+//             to:{" "}
+//             {data !== undefined && data.recievingMedium === "gmail"
+//               ? Array.isArray(
+//                   data.message[0].contact.from.toString().match(/<(.*?)>/)
+//                 )
+//                 ? data.message[0].contact.from.toString().match(/<(.*?)>/)[1]
+//                 : data.message[0].contact.from.toString().match(/<(.*?)>/)
+//               : data.message[0].contact.from.toString()}{" "}
+//           </Typography>
+//           <Typography variant="subtitle2" gutterBottom color="text.primary">
+//             subject:{" "}
+//             {data !== undefined && data.message[0].media.emailMsg.subject}
+//           </Typography>
+//         </Box> */}
+  
+//         <Box mt={2} px={"20px"}>
+//           {
+//             msgData?<Paper
+//             sx={{
+//               p: "2px 4px",
+//               // mt: 2,
+//               display: "flex",
+//               alignItems: "center",
+//               width: "100%",
+//               backgroundColor: "#F4F5F7",
+        
+//             }}
+//           >
+//             <InputLabel
+//               htmlFor="file-input"
+//               sx={{
+//                 display: "flex",
+//                 alignItems: "center",
+//                 justifyContent: "center",
+//               }}
+//             >
+//               <AttachFileIcon sx={{ cursor: "pointer", color: "#90A0B7" }} />
+//             </InputLabel>
+//             <Input
+//               id="file-input"
+//               type="file"
+//               sx={{ display: "none" }}
+//               // inputProps={{ multiple: true }}
+//               // onChange={(e) => {
+//               //   const target = e.target as HTMLInputElement;
+//               //   const file: File = (target.files as FileList)[0];
+//               //   // console.log(file);
+  
+//               //   setMedia(file);
+//               // }}
+//             />
+  
+//             <InputBase
+//               sx={{ ml: 1, flex: 1 }}
+//               placeholder="konsa"
+//               inputProps={{ "aria-label": "search google maps" }}
+//               onChange={(event) => {
+//                 setInput(event.target.value);
+//               }}
+//               value={input}
+//             />
+//             <IconButton
+//               type="submit"
+//               sx={{ p: "10px", color: "#007EF2", position: "relative", zIndex: 1 }}
+//               aria-label="search"
+//               // onClick={handleSubmit(recievingMediumCheck)}
+//             >
+//             <div onClick={sendReply}><SendIcon /></div>  
+//             </IconButton>
+//             {/* <IconButton
+//             size="small"
+//             onClick={() => {
+//               setshowBottomSheet(!showBottomSheet);
+//             }}
+//           >
+//             <KeyboardArrowDownIcon />
+//           </IconButton> */}
+//           </Paper>:<Paper
+//             component="form"
+//             sx={{
+//               p: "2px 4px",
+//               // mt: 2,
+//               display: "flex",
+//               alignItems: "center",
+//               width: "100%",
+//               backgroundColor: "#F4F5F7",
+//               // border : "1px solid black",
+//               // marginRight : "20px"
+//             }}
+//           >
+//             <InputLabel
+//               htmlFor="file-input"
+//               sx={{
+//                 display: "flex",
+//                 alignItems: "center",
+//                 justifyContent: "center",
+//               }}
+//             >
+//               <AttachFileIcon sx={{ cursor: "pointer", color: "#90A0B7" }} />
+//             </InputLabel>
+//             <Input
+//               id="file-input"
+//               type="file"
+//               sx={{ display: "none" }}
+//               inputProps={{ multiple: true }}
+//               onChange={(e) => {
+//                 const target = e.target as HTMLInputElement;
+//                 const file: File = (target.files as FileList)[0];
+//                 // console.log(file);
+  
+//                 setMedia(file);
+//               }}
+//             />
+  
+//             <InputBase
+//               sx={{ ml: 1, flex: 1 }}
+//               placeholder="Message"
+//               inputProps={{ "aria-label": "search google maps" }}
+//               onChange={(event) => {
+//                 setInput(event.target.value);
+//               }}
+//               value={input}
+//             />
+//             <IconButton
+//               type="submit"
+//               sx={{ p: "10px", color: "#007EF2", position: "relative", zIndex: 1 }}
+//               aria-label="search"
+//               onClick={handleSubmit(recievingMediumCheck)}
+//             >
+//               <SendIcon />
+//             </IconButton>
+//             {/* <IconButton
+//             size="small"
+//             onClick={() => {
+//               setshowBottomSheet(!showBottomSheet);
+//             }}
+//           >
+//             <KeyboardArrowDownIcon />
+//           </IconButton> */}
+//           </Paper>
+//           }
+//         </Box>
+//       </Box>
+//     );
+//   };
+  
+//   export default ChatScreen;
+    
+
+
+
+
+
+// import {
+//     Avatar,
+//     Badge,
+//     Box,
+//     Divider,
+//     Grid,
+//     IconButton,
+//     List,
+//     ListItem,
+//     ListItemAvatar,
+//     ListItemText,
+//     styled,
+//     Typography,
+//     Menu,
+//     Checkbox,
+//     Collapse,
+//     Paper,
+//     InputBase,
+//   } from "@mui/material";
+//   import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
+//   import AttachFileIcon from '@mui/icons-material/AttachFile';
+//   import MoreVertIcon from '@mui/icons-material/MoreVert';
+//   import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
+//   import MoreTimeIcon from '@mui/icons-material/MoreTime';
+//   import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+//   import { useEffect, useState } from "react";
+//   import ChatScreen from "./ChatScreen";
+//   import "../../App.css";
+//   import FilterListIcon from "@mui/icons-material/FilterList";
+//   import ChatLabel from "./ChatLabel";
+//   import MenuItem from "@mui/material/MenuItem";
+//   import RestorePageIcon from "@mui/icons-material/RestorePage";
+//   import ChatSearch from "./ChatSearch";
+//   import logo from "../../assets/Images/logo4.svg";
+//   import { socket } from "../../App";
+//   import { useDispatch } from "react-redux";
+//   import { readChat } from "../../features/get_messagesSlice";
+//   import ChatListBody from "./ChatListBody";
+//   import SearchIcon from "@mui/icons-material/Search";
+//   import { CircularLoading } from "../utils/CircularBar";
+//   import ChatBotUi from "./ChatBotUi";
+//   import ProfileUi from "./ProfileUi";
+//   import TypeCard from "./TypeCard";
+//   import axios from "axios";
+  
+//   const ConversationsList = ({ data, sendSkipBack, isEnd,myMessage ,reply}: any) => {
+//     const [chatCount, setChatCount] = useState(-1);
+//     console.log(chatCount)
+//     const [chatData, setChatData] = useState(data);
+//     const [msgData, setMesData] = useState(myMessage);
+//     console.log(chatData)
+//   // setMesData(myMessage)
+//     const [tagCollapse, settagCollapse] = useState(false);
+//     const [mediumCollapse, setmediumCollapse] = useState(false);
+//     const [activated, setActivated] = useState(false);
+//     // const [isRead, setIsRead] = useState(false);
+    
+//     // console.log(chatData)
+//     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+//     const open = Boolean(anchorEl);
+//     const dispatch = useDispatch<any>();
+//     const uniqueIds = new Set();
+//     // useEffect(()=>{
+//     //   setMesData(myMessage)
+//     // },[myMessage])
+//     // const uniqueChatData = chatData
+//     // .filter((item:any) => {
+//     //   if (!uniqueIds.has(item._id)) {
+//     //     uniqueIds.add(item._id);
+//     //     return true; // This item is unique; include it.
+//     //   }
+//     //   return false; // This item is a duplicate; exclude it.
+//     // });
+//     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+//       setAnchorEl(event.currentTarget);
+//     };
+//     const handleClose = () => {
+//       setAnchorEl(null);
+//     };
+  
+//     useEffect(() => {
+//       setChatData(data);
+//     }, [data]);
+  
+//     const FilterMenu = () => {
+//       const lables = JSON.parse(localStorage.getItem("label") ?? "");
+  
+//       const HandleFilterMedium: any = (medium: string) => {
+//         const filterChat = chatData.filter(
+//           (e: any) => e.recievingMedium === medium
+//         );
+  
+//         setChatData(filterChat);
+//       };
+  
+//       const HandleFilterLabel: any = (label: string) => {
+//         const filterChat = chatData.filter((e: any) => e.labels === label);
+  
+//         setChatData(filterChat);
+//       };
+  
+//       useEffect(() => {
+  
+//         const apiUrl = 'https://stg.api.convoportal.com/api/v1/iam/getOnlineAgents';
+//         const userData: any = localStorage.getItem('user');
+//         // console.log("user", userData)
+//         axios
+//           .get(apiUrl)
+//           .then((response) => {
+//             // console.log('API Response:', response.data);
+  
+  
+  
+//           })
+//           .catch((error) => {
+//             // console.error('API Error:', error);
+//           });
+  
+//       }, []);
+  
+//       return (
+//         <Menu
+//           id="basic-menu"
+//           anchorEl={anchorEl}
+//           open={open}
+//           onClose={handleClose}
+//           MenuListProps={{
+//             "aria-labelledby": "basic-button",
+//           }}
+//           anchorOrigin={{
+//             vertical: "bottom",
+//             horizontal: "center",
+//           }}
+//           transformOrigin={{
+//             vertical: "top",
+//             horizontal: "left",
+//           }}
+//         >
+//           {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
+//           <MenuItem onClick={handleClose}>My account</MenuItem>
+//           <Divider /> */}
+//           <MenuItem onClick={() => settagCollapse(!tagCollapse)}>
+//             <ListItemText>Tags</ListItemText>
+//             <Collapse in={tagCollapse} timeout="auto" unmountOnExit>
+//               {lables.map((e: string) => (
+//                 <MenuItem key={e}>
+//                   <Checkbox
+//                     onChange={() => {
+//                       HandleFilterLabel(e);
+//                     }}
+//                   />
+//                   <ListItemText>{e}</ListItemText>
+//                 </MenuItem>
+//               ))}
+//             </Collapse>
+//           </MenuItem>
+//           <Divider />
+//           <MenuItem onClick={() => setmediumCollapse(!mediumCollapse)}>
+//             <ListItemText>Medium</ListItemText>
+//           </MenuItem>
+//           <Collapse in={mediumCollapse} timeout="auto" unmountOnExit>
+//             <MenuItem>
+//               <Checkbox
+//                 onChange={() => {
+//                   HandleFilterMedium("facebook");
+//                 }}
+//               />
+//               <ListItemText>Facebook</ListItemText>
+//             </MenuItem>
+//             <MenuItem>
+//               <Checkbox
+//                 onChange={() => {
+//                   HandleFilterMedium("gmail");
+//                 }}
+//               />
+//               <ListItemText>Gmail</ListItemText>
+//             </MenuItem>
+//             <MenuItem>
+//               <Checkbox
+//                 onChange={() => {
+//                   HandleFilterMedium("Iinstagram");
+//                 }}
+//               />
+//               <ListItemText>Instagram</ListItemText>
+//             </MenuItem>
+//             <MenuItem>
+//               <Checkbox
+//                 onChange={() => {
+//                   HandleFilterMedium("outlook");
+//                 }}
+//               />
+//               <ListItemText>Outlook</ListItemText>
+//             </MenuItem>
+//             <MenuItem>
+//               <Checkbox
+//                 onChange={() => {
+//                   HandleFilterMedium("whatsapp");
+//                 }}
+//               />
+//               <ListItemText>WhatsApp</ListItemText>
+//             </MenuItem>
+//           </Collapse>
+//           <MenuItem
+//             onClick={() => {
+//               setChatData(data);
+//             }}
+//           >
+//             <RestorePageIcon /> Clear
+//           </MenuItem>
+//         </Menu>
+//       );
+//     };
+  
+//     const handleScroll = (e: any) => {
+//       const { offsetHeight, scrollTop, scrollHeight } = e.target;
+  
+//       if (offsetHeight + scrollTop >= scrollHeight * 0.9) {
+//         sendSkipBack(chatData?.length);
+//       }
+//     };
+  
+//     const handleRead: any = (chatId: String, isRead: any) => {
+//       if (!isRead) {
+//         dispatch(
+//           readChat({
+//             chatId,
+//           })
+//         ).then((onResolved: any) => {
+//           if (onResolved.payload === "true") {
+//           }
+//         });
+//       }
+//     };
+  
+//     return (
+//       <>
+//         <Grid
+//           container
+//           spacing={2}
+//           // gap={"10px"}
+//           columnSpacing={2}
+//           sx={{
+//             width: "100%",
+//             maxHeight: "100vh",
+//             height: "100vh",
+//             zIndex: 1,
+//             borderRadius: "0.5rem",
+//             boxShadow: 3,
+//             overflowX: "clip",
+//             background: "#000000",
+//             marginTop: 1,
+//           }}
+//         >
+//           {/* ////////////////// */}
+//           <ChatBotUi />
+//           {/* ////////////////// */}
+//           <Grid
+//             item
+//             xs={2.5}
+  
+//             sx={{
+//               height: "100%",
+//               position: "relative",
+//               backgroundColor: "#000000",
+//               overflowY: "scroll",
+//               // display: "flex",
+//               "&::-webkit-scrollbar": {
+//                 width: "0px",
+//                 visibility: "hidden",
+//               },
+//               "&::-webkit-scrollbar-thumb": {
+//                 backgroundColor: "transparent",
+//               },
+//               // borderRight: "8px solid #000000",
+//               overflowX: "clip",
+//             }}
+//             onScroll={handleScroll}
+//           >
+  
+//             <Box sx={{ bgcolor: "#000000", color: "#ffffff" }}>
+//               <Box>
+//                 <Typography
+//                   gutterBottom
+//                   fontSize={"20px"}
+//                   fontWeight={"bolder"}
+//                   color={"#ffffff"}
+//                 >
+//                   CHAT
+//                 </Typography>
+//                 <Divider sx={{ bgcolor: "#ffffff" }} />
+//               </Box>
+//               <Box
+//                 sx={{
+//                   display: "flex",
+//                   alignItems: "center",
+//                   justifyContent: "end",
+//                   height: "60px",
+//                   p: 1,
+//                   bgcolor: "#000000"
+  
+//                 }}
+//               >
+//                 <IconButton
+//                   id="basic-button"
+//                   aria-controls={open ? "basic-menu" : undefined}
+//                   aria-haspopup="true"
+//                   aria-expanded={open ? "true" : undefined}
+//                   onClick={handleClick}
+//                 >
+//                   <FilterListIcon sx={{ color: "#ffffff" }} />
+//                 </IconButton>
+  
+//                 <FilterMenu />
+//               </Box>
+//               <Box sx={{
+//                 display: "flex",
+//                 flexDirection: "column",
+//                 alignItems: "center",
+//                 justifyContent: "center",
+//               }}>
+//                 <ProfileUi isOnline={false} />
+//               </Box>
+//             </Box>
+  
+//             {/* <ChatSearch chatData={chatData} /> */}
+  
+//             <Box p={" 0px 20px 0px 8px"}>
+//               <Paper
+//                 component="form"
+//                 sx={{ p: "2px 4px", display: "flex", alignItems: "center", bgcolor: "#323232", borderRadius: 20, mt: 2 }}
+//               >
+//                 <InputBase
+//                   sx={{ ml: 1, flex: 1, color: "#ffffff" }}
+//                   placeholder="Search..."
+//                   inputProps={{ "aria-label": "search google maps" }}
+//                 />
+//                 <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+//                   <SearchIcon />
+//                 </IconButton>
+//               </Paper>
+//             </Box>
+//             <List
+//               sx={{
+//                 width: "100%",
+//                 maxWidth: 360,
+//                 bgcolor: "#000000",
+//                 color: "#ffffff",
+//                 mt: 3
+//               }}
+//             >
+            
+//             {chatData.map((e: any, index: number) => (
+//                 <div key={e._id}>
+//                   {e.message[0] !== undefined && e !== undefined && (
+//                     <Box
+//                       onClick={() => {
+//                         setChatCount(index);
+//                         socket.emit("addUser", e.userSpecificId);
+//                         handleRead(e._id, e.isRead);
+//                         setActivated(true);
+//                       }}
+//                     >
+//                       <ChatListBody e={e} />
+//                     </Box>
+//                   )}
+//                 </div>
+//               ))}
+  
+//   {
+//     myMessage.map((e: any, i: any) => {
+//       return (
+//         <div key={i}>
+//           <Box
+//             onClick={() => {
+//               setChatCount(i);
+//               setActivated(true);
+//             }}
+//           >
+//           <ChatListBody e={e} />
+  
+//             {/* Your Box content here */}
+//           </Box>
+//         </div>
+//       );
+//     })
+//   }
+  
+//             </List>
+  
+//             <Box sx={{ display: "flex", justifyContent: "center" }}>
+//               <CircularLoading />
+//             </Box>
+  
+//           </Grid>
+  
+//           <Grid
+//             item
+//             xs={7}
+//             sx={{
+//               mt: 2,
+//               borderRadius: 10,
+//               maxHeight: "100vh",
+//               backgroundColor: "#585858",
+//               // borderLeft: "8px solid #585858 ",
+//             }}
+//           >
+//    {chatCount !== -1 ? (
+//     <ChatScreen
+//       Chatdata={chatData[chatCount]}
+//       chatNumber={chatCount}
+//       currentUserID={
+//         chatData.length !== 0 && chatData[chatCount].userSpecificId
+//       }
+//     />
+//   ) : (
+//     chatCount !== -1 && (myMessage[chatCount] || (myMessage[chatCount] && myMessage[chatCount][1])) ? (
+//       <ChatScreen
+//         chatNumber={chatCount}
+//         msgData={myMessage}
+//         reply={reply}
+//         currentUserID={
+//           myMessage[chatCount]?.userSpecificId || (myMessage[chatCount] && myMessage[chatCount][1]?.name)
+//         }
+//       />
+//     ) : null
+//   )}
+  
+//           </Grid>
+//           <Grid item
+//             xs={2.5}
+//             sx={{
+//               mt: 2,
+//               maxHeight: "100vh",
+//               backgroundColor: "#000000",
+  
+//             }}>
+//             <Box>
+//               <Box>
+//                 <Typography
+//                   gutterBottom
+//                   fontSize={"20px"}
+//                   fontWeight={"bolder"}
+//                   color={"#ffffff"}
+//                 >
+//                   Shared files
+//                 </Typography>
+//                 <Divider sx={{ bgcolor: "#ffffff" }} />
+//               </Box>
+//               <Box sx={{
+//                 mt: 3,
+//                 display: "flex",
+//                 flexDirection: "column",
+//                 alignItems: "center",
+//                 justifyContent: "center",
+//               }}>
+//                 <ProfileUi isOnline={false} />
+//               </Box>
+//               <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
+//                 <Box
+//                   sx={{ bgcolor: "#00A489", width: "100px", height: "70px", borderRadius: 2, display: "flex", justifyContent: "space-around", p: 0.5 }}
+//                 >
+  
+//                   <Box>
+//                     <InsertDriveFileIcon style={{ fontSize: "40px", color: '#000000' }} />
+//                   </Box>
+//                   <Box>
+//                     <Typography sx={{ color: "#ffffff" }}>All</Typography>
+//                     <Typography sx={{ color: "#ffffff" }}>231</Typography>
+//                   </Box>
+//                 </Box>
+//                 <Box
+//                   sx={{ bgcolor: "#00A489", width: "100px", height: "70px", borderRadius: 2, display: "flex", justifyContent: "space-around", p: 0.5 }}
+//                 >
+//                   <Box>
+//                     <AttachFileIcon style={{ fontSize: "40px", color: '#D9D9D9' }} />
+//                   </Box>
+//                   <Box>
+//                     <Typography sx={{ color: "#000000" }}>All</Typography>
+//                     <Typography sx={{ color: "#000000" }}>231</Typography>
+//                   </Box>
+//                 </Box>
+//               </Box>
+//               <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2, p: 0.5 }}>
+//                 <Box>
+//                   <Typography sx={{ color: "#ffffff" }}>File type</Typography>
+//                 </Box>
+//                 <Box>
+//                   < MoreVertIcon style={{ color: '#D9D9D9' }} />
+//                 </Box>
+//               </Box>
+//               <Box>
+//                 <TypeCard />
+//                 <TypeCard color="#C1B07A" icon={<InsertPhotoIcon />} />
+//                 <TypeCard color="#7ED3DA" icon={<SmartDisplayIcon />} />
+//                 <TypeCard color="#BC6E5E" icon={<MoreTimeIcon />} />
+//               </Box>
+//             </Box>
+  
+//           </Grid>
+//         </Grid>
+//       </>
+//     );
+//   };
+  
+//   export default ConversationsList;
+  

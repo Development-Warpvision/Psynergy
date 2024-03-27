@@ -1,0 +1,449 @@
+.frameChild,
+.frameItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rectangleContainer,
+.rectangleDiv {
+  position: absolute;
+  left: 0;
+  height: 44px;
+}
+
+.rectangleContainer {
+  top: 458px;
+  width: 246px;
+  font-size: var(--font-size-xl);
+  color: var(--color-dodgerblue);
+}
+
+.rectangleDiv {
+  top: 0;
+  border-radius: 0 var(--br-5xs) var(--br-5xs) 0;
+  background-color: var(--color-whitesmoke-100);
+  width: 247px;
+}
+
+.analystics {
+  position: absolute;
+  top: 10px;
+  font-weight: 500;
+}
+
+.analysticsIcon,
+.frameDiv {
+  position: absolute;
+  top: 12px;
+
+  width: 15px;
+  height: 16px;
+}
+
+.frameDiv {
+  top: 386px;
+  left: 0;
+  width: 247px;
+  height: 44px;
+}
+
+.notificationsNoneIcon {
+  position: absolute;
+  top: 6px;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
+
+.chatsTabInactiveChild,
+.rectangleParent1 {
+  position: absolute;
+  top: 530px;
+  left: 0;
+  width: 247px;
+  height: 44px;
+}
+
+.chatsTabInactiveChild {
+  top: 0;
+  border-radius: 0 var(--br-5xs) var(--br-5xs) 0;
+  background-color: var(--color-whitesmoke-100);
+  width: 246px;
+}
+
+.chatsTabInactive,
+.rectangleParent {
+  position: absolute;
+  top: 242px;
+  left: 0;
+  width: 246px;
+  height: 44px;
+}
+
+.rectangleParent {
+  top: 0;
+  width: 297px;
+  height: 990px;
+  display: none;
+  mix-blend-mode: normal;
+  font-size: var(--font-size-base);
+}
+
+.taskAssign {
+  position: absolute;
+  top: 8px;
+  left: 75px;
+  font-weight: 500;
+  display: inline-block;
+  width: 171px;
+  height: 28px;
+}
+
+.vectorIcon1 {
+  position: absolute;
+  height: 45.23%;
+  width: 8.37%;
+  top: 27.27%;
+  right: 76.19%;
+  bottom: 27.5%;
+  left: 15.45%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+
+.rectangleParent3,
+.rectangleParent4 {
+  position: absolute;
+  top: 314px;
+  left: 0;
+  width: 246px;
+  height: 44px;
+}
+
+.rectangleParent4 {
+  top: 376px;
+}
+
+.chats1,
+.settings1 {
+  position: absolute;
+  top: 238px;
+
+  font-weight: 500;
+}
+
+.settings1 {
+  top: 8px;
+
+}
+
+.dashboardTabActive,
+.rectangleParent5 {
+  position: absolute;
+  left: 0;
+  width: 246px;
+  height: 44px;
+}
+
+.dashboardTabActive {
+  top: 0;
+  font-size: var(--font-size-xl);
+  color: var(--color-dodgerblue);
+}
+
+.rectangleParent5 {
+  top: 509px;
+  font-size: var(--font-size-lg);
+}
+
+.analysticsIcon1 {
+  position: absolute;
+  top: 12px;
+  width: 16px;
+  height: 16px;
+}
+
+.rectangleParent6 {
+  position: absolute;
+  top: 437px;
+  left: 0;
+  width: 247px;
+  height: 44px;
+}
+
+.notification2 {
+  position: absolute;
+  top: 8px;
+  font-weight: 500;
+}
+
+.rectangleParent2,
+.rectangleParent7 {
+  position: absolute;
+  top: 581px;
+  left: 0;
+  width: 247px;
+  height: 44px;
+  font-size: var(--font-size-lg);
+}
+
+.rectangleParent2 {
+  top: 0;
+  width: 256px;
+  height: 990px;
+  mix-blend-mode: normal;
+  font-size: var(--font-size-base);
+}
+
+.admin {
+  font-weight: 600;
+}
+
+.welcomeAdmin {
+  position: relative;
+}
+
+.welcomeAdminWrapper {
+  position: absolute;
+  top: 15px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.image1Icon {
+  position: relative;
+  width: 200px;
+  height: 42.73px;
+  object-fit: cover;
+}
+
+.headerLogo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #d5d5d5;
+  box-sizing: border-box;
+  width: 256px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  align-items: center;
+  justify-content: center;
+}
+
+.shivamThakur {
+  position: relative;
+  font-weight: 500;
+  display: inline-block;
+  width: 122px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.downButtonIcon,
+.profileChild {
+  position: relative;
+  object-fit: cover;
+}
+
+.profileChild {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+}
+
+.downButtonIcon {
+  width: 12px;
+  height: 12px;
+}
+
+.headerHorxontal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 80px;
+  color: var(--color-darkslategray-200);
+}
+
+.chatSettings {
+  position: relative;
+  font-weight: 500;
+}
+
+.chatSettingsWrapper,
+.notificationSettingsWrapper {
+  position: absolute;
+  top: 75px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: var(--color-darkslategray-200);
+}
+
+.notificationSettingsWrapper {
+  top: 373px;
+}
+
+.enterIsSend {
+  position: absolute;
+  top: 150px;
+
+  font-weight: 500;
+  display: inline-block;
+  width: 316px;
+  height: 58px;
+}
+
+.enterKeyWillSendYouMessagWrapper {
+  position: absolute;
+  top: 174px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: var(--color-gray-200);
+}
+
+.adminSettingsChild {
+  left: 500px;
+}
+
+.adminSettingsChild,
+.mediaVisibility {
+  position: absolute;
+  top: 170px;
+  width: 41px;
+  height: 18px;
+}
+
+.mediaVisibility {
+  top: 264px;
+  font-weight: 500;
+  display: inline-block;
+  width: 316px;
+  height: 58px;
+  left: 1px;
+}
+
+.showNewlyDownloadedMediaInWrapper {
+  position: absolute;
+  top: 288px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: var(--color-gray-200);
+}
+
+.adminSettingsItem {
+  position: absolute;
+  top: 290px;
+  width: 41px;
+  height: 18px;
+  left: 500px;
+}
+
+.disableenableNotifications {
+  position: absolute;
+  left: 1px;
+  top: 458px;
+  font-weight: 500;
+  display: inline-block;
+  width: 316px;
+  height: 58px;
+}
+
+.notificationsWillNotBeShowWrapper {
+  position: absolute;
+  top: 482px;
+  display: flex;
+  flex-direction: row;
+  
+  padding: var(--padding-3xs);
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: var(--color-gray-200);
+}
+.adminSettingsInner{
+  left: 500px;
+  top: 470px !important;
+}
+.adminSettingsInner,
+.helpIcon {
+  position: absolute;
+  top: 498px;
+  width: 41px;
+  height: 18px;
+}
+
+.helpIcon {
+  top: 590px;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  left: 0;
+}
+
+.helpSupport {
+  left: 55px;
+  position: absolute;
+  top:600px;
+  font-weight: 500;
+  display: inline-block;
+  width: 205px;
+  height: 40px;
+}
+
+.aboutUsWrapper,
+.contactUsWrapper {
+  position: absolute;
+  top: 634px;
+  display: flex;
+  flex-direction: row;
+  padding: var(--padding-3xs);
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: var(--font-size-base);
+  color: var(--color-dodgerblue);
+}
+
+.contactUsWrapper {
+  top: 681px;
+}
+
+.adminSettingsChild1,
+.ellipseDiv {
+  position: absolute;
+  top: 652px;
+  border-radius: 50%;
+  background-color: var(--color-darkslategray-100);
+  width: 8px;
+  height: 8px;
+}
+
+.adminSettingsChild1 {
+  top: 699px;
+}
+
+.adminSettings {
+  position: relative;
+  background-color: var(--color-whitesmoke-100);
+  width: 100%;
+  height: 990px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+}

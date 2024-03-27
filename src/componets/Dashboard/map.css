@@ -1,0 +1,28 @@
+.world-map-container figure {
+    background: linear-gradient(90deg, #0000FF, #FF1493) !important;
+    border-radius: 20px;
+    margin-top: 40px;
+}
+
+.world-map-container figure svg {
+    /* background: linear-gradient(90deg, #0000FF, #FF1493) !important; */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: auto !important;
+}
+
+.world-map-container figure svg .rsm-geography {
+    fill: linear-gradient(90deg, #0000FF, #FF1493) !important;
+}
+
+/* Change the background color of individual countries with a more specific selector */
+.world-map-container figure svg .rsm-geography[data-name]:not(.rsm-geography-graticule) {
+    fill: linear-gradient(90deg, #0000FF, #FF1493) !important;
+}
+
+/* Apply background color to countries */
+.world-map-container .rsm-geographies path {
+    fill: rgba(56, 56, 56, 1) !important;
+    /* Your desired background color */
+}
