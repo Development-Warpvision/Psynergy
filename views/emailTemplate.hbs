@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <style>
+
+      *{ box-sizing: border-box; margin: 0; padding: 0; background-color:
+      rgb(234, 225, 225); font: 1em Arial; } h1,h4,p,a{ background-color: white;
+      } h1{ margin: 8% 3%; font-weight: bold; font-size: 1.5em; } h4,p{ margin:
+      3% ; } .insideDiv{ margin: 5% 25%; padding: 2% 5%; background-color:
+      white; } a{ margin: 8% 3%; display: flex; justify-content: center;
+      align-items: center; text-decoration: none; background-color:skyblue;
+      color: white; padding: 12px 12px; } .titleLogo{ display: flex; margin: 3%
+      ; align-items: center; justify-content: center; } h2{ margin-left: 1%;
+      font-weight: bold; font-size: 1.5em; } img{ width: auto; height: auto; }
+    </style>
+
+    <div class="titleLogo">
+
+      <img src="../utils/Blank diagram (2).jpeg" alt="logo" />
+      <h2>My site</h2>
+    </div>
+  </head>
+  <body>
+
+    <div class="brandName">
+      <div class="insideDiv">
+        <h1>Password Reset</h1>
+        <h4>{{projects.name}},</h4>
+        <p>If you want to reset password you can click below</p>
+        <a href={{projects.link}}>Reset your password</a>
+        <p>Thanks siteName Team</p>
+      </div>
+    </div>
+  </body>
+</html>
